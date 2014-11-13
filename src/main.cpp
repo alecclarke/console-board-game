@@ -9,6 +9,7 @@
 #include <iostream>
 #include "GameBoard.h"
 #include "TempObjects.h"
+#include "Player.h"
 
 int main() {
     GameBoard<Tile, Player> * board = new GameBoard<Tile, Player>(10,10,2);
@@ -72,10 +73,10 @@ int main() {
                 std::string str = p2->getName();
                 board->move(move, str);
             }
-            
+
         }else{
             break;
         }
     }
-    
+
 }

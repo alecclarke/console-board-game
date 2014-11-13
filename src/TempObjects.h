@@ -11,15 +11,6 @@
 
 #include <stdio.h>
 #include <string>
-class Player{
-private:
-    std::string name;
-public:
-    Player();
-    Player(std::string nname);
-    std::string getName();
-};
-
 class Tile{
 };
 
