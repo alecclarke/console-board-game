@@ -167,7 +167,7 @@ void GameBoard<T,J>::moveUpdate(GameBoard::playerRef& pRef, enum Move move){
     switch (move) {
         case UP:
             try {
-                grid[pRef.col-1][pRef.row].currentPlayers.push_back(pRef.player);
+                grid.at(pRef.col-1).at(pRef.row).currentPlayers.push_back(pRef.player);
                 pRef.col--;
             } catch (const std::out_of_range& oor) {
                 std::cerr << "Out of Range error: " << oor.what() << '\n';
@@ -175,7 +175,7 @@ void GameBoard<T,J>::moveUpdate(GameBoard::playerRef& pRef, enum Move move){
             break;
         case DOWN:
             try {
-                grid[pRef.col+1][pRef.row].currentPlayers.push_back(pRef.player);
+                grid.at(pRef.col+1).at(pRef.row).currentPlayers.push_back(pRef.player);
                 pRef.col++;
             } catch (const std::out_of_range& oor) {
                 std::cerr << "Out of Range error: " << oor.what() << '\n';
@@ -183,7 +183,7 @@ void GameBoard<T,J>::moveUpdate(GameBoard::playerRef& pRef, enum Move move){
             break;
         case LEFT:
             try {
-                grid[pRef.col][pRef.row-1].currentPlayers.push_back(pRef.player);
+                grid.at(pRef.col).at(pRef.row-1).currentPlayers.push_back(pRef.player);
                 pRef.row--;
             } catch (const std::out_of_range& oor) {
                 std::cerr << "Out of Range error: " << oor.what() << '\n';
@@ -191,7 +191,7 @@ void GameBoard<T,J>::moveUpdate(GameBoard::playerRef& pRef, enum Move move){
             break;
         case RIGHT:
             try {
-                grid[pRef.col][pRef.row+1].currentPlayers.push_back(pRef.player);
+                grid.at(pRef.col).at(pRef.row+1).currentPlayers.push_back(pRef.player);
                 pRef.row++;
             } catch (const std::out_of_range& oor) {
                 std::cerr << "Out of Range error: " << oor.what() << '\n';
