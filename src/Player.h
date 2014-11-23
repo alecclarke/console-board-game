@@ -22,6 +22,7 @@ private:
     int jewel;
     int cart;
     int food;
+    int inventory;//size of current inventory<=capacity
 public:
     Player();
     Player(std::string playerName);
@@ -33,6 +34,7 @@ public:
     int getJewels();
     int getCart();
     int getFood();
+    int getInventory();
     void setGold(int nGold);
     void setRuby(int nRuby);
     void setSpice(int nSpice);
@@ -40,9 +42,11 @@ public:
     void setJewels(int nJewels);
     void setCart(int nCart);
     void setFood(int nFood);
+    void setInventory(int nInv);
     bool canAct() const;
     bool pay(Player& player);
     void eat();
+    void printStats();
 };
 
 #endif /* defined(__boardGameCode__Player__) */
