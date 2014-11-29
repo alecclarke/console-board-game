@@ -27,14 +27,14 @@ public:
     Player();
     Player(std::string playerName);
     std::string getName();
-    int getGold();
-    int getRuby();
-    int getSpice();
-    int getFabric();
-    int getJewels();
-    int getCart();
-    int getFood();
-    int getInventory();
+    int getGold()const;
+    int getRuby()const;
+    int getSpice()const;
+    int getFabric()const;
+    int getJewels()const;
+    int getCart()const;
+    int getFood()const;
+    int getInventory()const;
     void setGold(int nGold);
     void setRuby(int nRuby);
     void setSpice(int nSpice);
@@ -47,6 +47,30 @@ public:
     bool pay(Player& player);
     void eat();
     void printStats();
+    inline friend std::ostream& operator << (std::ostream& os, const Player& player){
+        os<<player.name<<" ";
+        os<<player.gold<<" ";
+        os<<player.ruby<<" ";
+        os<<player.spice<<" ";
+        os<<player.fabric<<" ";
+        os<<player.jewel<<" ";
+        os<<player.cart<<" ";
+        os<<player.food<<" ";
+        os<<player.inventory<<" ";
+        return os;
+    };
+    inline friend std::istream& operator >> (std::istream& is, Player& player){
+        is>>player.name;
+        is>>player.gold;
+        is>>player.ruby;
+        is>>player.spice;
+        is>>player.fabric;
+        is>>player.jewel;
+        is>>player.cart;
+        is>>player.food;
+        is>>player.inventory;
+        return is;
+    };
 };
 
 #endif /* defined(__boardGameCode__Player__) */

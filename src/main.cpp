@@ -12,17 +12,22 @@
 #include "Player.h"
 #include "TileFactory.h"
 #include <fstream>
+#include "GamePlay.h"
 
 int main() {
-    GameBoard<class Tile, class Player> * board;
+    play();
+    /*GameBoard<class Tile, class Player> * board = new GameBoard<class Tile, class Player>();
     Player p1;
     Player p2;
-    //std::ifstream is("savedGame.txt");
-    //if (is) {
-      //  is>>*board;
-        //is.close();
-        
-    //}else{
+    std::string input;
+    std::cout<<"Load Game?"<<std::endl;
+    getline(std::cin,input);
+    if (input == "yes") {
+      std::ifstream is("savedGame.txt");
+      //check is file exists
+      is>>*board;
+      is.close();
+    }else{
     board = new GameBoard<Tile, Player>(5,5,2);
     TileFactory * tf = TileFactory::get(25);
     for (int i = 0; i<5; i++) {
@@ -34,11 +39,10 @@ int main() {
     p2 = *new Player("Player2");
     board->setPlayer(p1);
     board->setPlayer(p2);
-    //}
+    }
     int row,col;
     while(true){
         std::cout<<"Show Surrounding Squares?"<<std::endl;
-        std::string input;
         getline(std::cin,input);
         if (input == "yes1") {
             p1.printStats();
@@ -69,17 +73,19 @@ int main() {
                 board->getPlayerCoordinates(p1.getName(), &row, &col);
                 //if(board->payPlayers(p1, row, col)){
                     board->getTile(row, col).clone()->action(p1);
+                    board->updatePlayer(p1);
                 //}
             }
-           // std::cout<<"Save and Quit?"<<std::endl;
-            //getline(std::cin,input);
-            //if(input =="yes"){
-             //   std::ofstream os("savedGame.txt");
-               // os<<*board;
-                //os.close();
-                //delete board;
-                //break;
-            //}
+            std::cout<<"Save and Quit?"<<std::endl;
+            getline(std::cin,input);
+            if(input =="yes"){
+                std::ofstream os;
+                os.open("savedGame.txt");
+                os<<*board;
+                os.close();
+                delete board;
+                break;
+            }
         }else if (input == "yes2"){
             board->getPlayerCoordinates(p2.getName(), &row, &col);
             board->printNeighbours(row, col);
@@ -106,6 +112,6 @@ int main() {
         }else{
             break;
         }
-    }
-
+    
+    }*/
 }

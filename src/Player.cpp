@@ -43,8 +43,8 @@ void Player::eat(){
 
 bool Player::pay(Player &player){
     if(this->getGold()>0){
-    player.setGold(player.getGold()+1);
-    this->setGold(this->getGold()-1);
+        player.setGold(player.getGold()+1);
+        this->setGold(this->getGold()-1);
         return true;
     }
     return false;
@@ -82,35 +82,35 @@ void Player::setInventory(int nInv){
     inventory = nInv;
 }
 
-int Player::getCart(){
+int Player::getCart()const{
     return cart;
 }
 
-int Player::getFabric(){
+int Player::getFabric()const{
     return fabric;
 }
 
-int Player::getFood(){
+int Player::getFood()const{
     return food;
 }
 
-int Player::getGold(){
+int Player::getGold()const{
     return gold;
 }
 
-int Player::getJewels(){
+int Player::getJewels()const{
     return jewel;
 }
 
-int Player::getRuby(){
+int Player::getRuby()const{
     return ruby;
 }
 
-int Player::getSpice(){
+int Player::getSpice()const{
     return spice;
 }
 
-int Player::getInventory(){
+int Player::getInventory()const{
     return inventory;
 }
 

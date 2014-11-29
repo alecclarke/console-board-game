@@ -14,14 +14,18 @@
 
 class Tile{
 private:
-    std::string name;
+    int type; //used to specify type of tile, int type because of use in switch statement
 public:
     Tile();
     bool operator==(const Tile &t);
     virtual bool action(Player& player)const;
     virtual Tile* clone()const;
     virtual void print()const;
-    //std::ostream& operator<<;
+    friend std::ostream& operator << (std::ostream& os, const Tile& tile);
+    friend std::istream& operator >> (std::istream& is, Tile& tile);
+    void setType(int i);
+    int getType();
+    Tile * setTileType(Tile * tile);
 };
 
 class Restaurant: public Tile{
