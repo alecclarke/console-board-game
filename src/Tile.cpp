@@ -114,6 +114,7 @@ bool SpiceMerchant::action(Player &player)const{
             }else{
                 numSacks = player.getCart() - player.getInventory();
                 if (numSacks==0) {
+                    std::cout << "Not enough space on cart" << std::endl;
                     return false; //not enough space on cart
                 }
             }
@@ -123,8 +124,10 @@ bool SpiceMerchant::action(Player &player)const{
             player.eat();
             return true; //successful trade
         }
+        std::cout << "Not enough gold" << std::endl;
         return false; //not enough gold
     }
+    std::cout << "Not enough food to act" << std::endl;
     return false; //not enough food to act
 }
 
@@ -155,6 +158,7 @@ bool FabricManufacturer::action(Player &player)const{
             }else{
                 numTissues = player.getCart()-player.getInventory();
                 if (numTissues==0) {
+                    std::cout << "Not enough space on cart" << std::endl;
                     return false;//not enough space on cart
                 }
             }
@@ -164,8 +168,10 @@ bool FabricManufacturer::action(Player &player)const{
             player.eat();
             return true;
         }
+        std::cout << "No enough gold" << std::endl;
         return false;// not enough gold
     }
+    std::cout << "Not enough food to act" << std::endl;
     return false;//not enough food
 }
 
@@ -188,6 +194,7 @@ bool Jeweler::action(Player &player)const{
             }else{
                 numJewles = player.getCart()-player.getInventory();
                 if (numJewles==0) {
+                    std::cout << "Not enough spce on cart" << std::endl;
                     return false;//not enough space on cart
                 }
             }
@@ -197,8 +204,10 @@ bool Jeweler::action(Player &player)const{
             player.eat();
             return true;
         }
+        std::cout << "Not enough gold" << std::endl;
         return false;// not enough gold
     }
+    std::cout << "Not enough food to act" << std::endl;
     return false;//not enough food
 }
 
@@ -221,8 +230,10 @@ bool CartManufacturer::action(Player &player)const{
             player.setGold(player.getGold()-7);
             return true;
         }
+        std::cout << "Not enough gold" << std::endl;
         return false;// not enough gold
     }
+    std::cout << "Not enough food" << std::endl;
     return false;//not enough food
 }
 
@@ -249,12 +260,16 @@ bool SmallMarket::action(Player &player)const{
                     player.setInventory(player.getInventory()-3);
                     return true;
                 }
+                std::cout << "Not enough spices" << std::endl;
                 return false;//not enough spices
             }
+            std::cout << "Not enough jewel" << std::endl;
             return false;//not enough jewel
         }
+        std::cout << "Not enough fabric" << std::endl;
         return false;// not enough fabric
     }
+    std::cout << "Not enough food" << std::endl;
     return false;//not enough food
 }
 
@@ -290,8 +305,10 @@ bool SpiceMarket::action(Player &player)const{
             player.setInventory(player.getInventory()-spices);
             return true;
         }
+        std::cout << "Not enough spices" << std::endl;
         return false;// not enough spices
     }
+    std::cout << "Not enough food" << std::endl;
     return false;//not enough food
 }
 
@@ -327,8 +344,10 @@ bool JewelryMarket::action(Player &player)const{
             player.setInventory(player.getInventory()-jewelry);
             return true;
         }
+        std::cout << "Not enough jewlery" << std::endl;
         return false;// not enough jewelry
     }
+    std::cout << "Not enough food" << std::endl;
     return false;//not enough food
 }
 FabricMarket::FabricMarket(){setType(10);}
@@ -363,8 +382,10 @@ bool FabricMarket::action(Player &player)const{
             player.setInventory(player.getInventory()-fabric);
             return true;
         }
+        std::cout << "Not enough jewelry" << std::endl;
         return false;// not enough jewelry
     }
+    std::cout << "Not enough food" << std::endl;
     return false;//not enough food
 }
 
@@ -401,6 +422,7 @@ bool BlackMarket::action(Player &player)const{
                         }else{
                             spicesGained = player.getCart()-player.getInventory();
                             if (spicesGained==0) {
+                                std::cout << "Not enough space on cart" << std::endl;
                                 return false;//not enough space on cart
                             }
                         }
@@ -417,6 +439,7 @@ bool BlackMarket::action(Player &player)const{
                         }else{
                             fabricesGained = player.getCart()-player.getInventory();
                             if (fabricesGained==0) {
+                                std::cout << "Not enough space on cart" << std::endl;
                                 return false;//not enough space on cart
                             }
                         }
@@ -433,6 +456,7 @@ bool BlackMarket::action(Player &player)const{
                         }else{
                             jewelryGained = player.getCart()-player.getInventory();
                             if (jewelryGained==0) {
+                                std::cout << "Not enough space on cart" << std::endl;
                                 return false;//not enough space on cart
                             }
                         }
@@ -447,8 +471,10 @@ bool BlackMarket::action(Player &player)const{
             }
             return true;
         }
+        std::cout << "Not enough gold" << std::endl;
         return false;// not enough gold
     }
+    std::cout << "Not enough food" << std::endl;
     return false;//not enough food
 }
 
@@ -485,8 +511,10 @@ bool Casino::action(Player &player)const{
             player.setInventory(player.getInventory());
             return true;
         }
+        std::cout << "Not enough gold" << std::endl;
         return false;// not enough gold
     }
+    std::cout << "Not enough food" << std::endl;
     return false;//not enough food
 }
 
@@ -512,10 +540,13 @@ bool GemMerchant::action(Player &player)const{
                 player.setInventory(player.getInventory()+numRuby);
                 return true;
             }
+            std::cout << "Not enough space on cart" << std::endl;
             return false;//not enough room in cart
         }
+        std::cout << "Not enough food" << std::endl;
         return false;// not enough gold
     }
+    std::cout << "Not enough food" << std::endl;
     return false;//not enough food
 }
 
@@ -543,14 +574,19 @@ bool Palace::action(Player &player)const{
                         player.setInventory(player.getInventory()+numRuby-15);
                         return true;
                     }
+                    std::cout << "Not enough space on cart" << std::endl;
                     return false;//not enough room in cart
                 }
+                std::cout << "Not enough spices" << std::endl;
                 return false;//not enough spices
             }
+            std::cout << "Not enough jewelry" << std::endl;
             return false;//not enough jewelry
         }
+        std::cout << "Not enough fabric" << std::endl;
         return false;// not enough fabric
     }
+    std::cout << "Not enough food" << std::endl;
     return false;//not enough food
 }
 

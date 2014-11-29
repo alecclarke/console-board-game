@@ -52,7 +52,7 @@ void play() {
     while (!endGame) {
         for (int i = 0; i<board->getNumPlayers(); i++) {
             Player player = board->getPlayerList()[i].player;
-            if(player.getRuby() >= 0){
+            if(player.getRuby() >= 5){
                 getWinPlayer(player, board);
                 endGame = true;
             }else{
@@ -83,7 +83,7 @@ void play() {
                     std::string str = player.getName();
                     board->move(move, str);
                 }
-                std::cout<<"Commit Action?"<<std::endl;
+                std::cout<<"Commit Action? (yes/no)"<<std::endl;
                 getline(std::cin,input);
                 if(input =="yes"){
                     board->getPlayerCoordinates(player.getName(), &row, &col);
@@ -94,7 +94,7 @@ void play() {
                         std::cout<<"Can't pay the players currently on that square. Action aborted."<<std::endl;
                     }
                 }
-                std::cout<<"Save and Quit?"<<std::endl;
+                std::cout<<"Save and Quit?(yes/no)"<<std::endl;
                 getline(std::cin,input);
                 if(input =="yes"){
                     std::ofstream os;
