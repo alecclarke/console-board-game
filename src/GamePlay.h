@@ -8,6 +8,10 @@
 
 #ifndef boardGameCode_GamePlay_h
 #define boardGameCode_GamePlay_h
+#include "Player.h"
+#include "GameBoard.h"
+
 void play();
+void getWinPlayer(Player player, GameBoard<class Tile, class Player> * board);
 
 #endif
