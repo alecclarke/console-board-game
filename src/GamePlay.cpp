@@ -44,7 +44,8 @@ void play() {
         for (int i = 0; i<numPlayers; i++) {
             std::cout<<"Enter name for Player "<<i+1<<std::endl;
             getline(std::cin,input);
-            board->setPlayer(*new Player(input));
+            Player player = * new Player(input);
+            board->setPlayer(player);
         }
     }
     bool endGame = false;

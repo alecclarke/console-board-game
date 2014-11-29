@@ -13,7 +13,16 @@
 TileFactory::TileFactory(int _nTiles){
     int ratio = _nTiles/14;
     for (int i = 0; i<ratio; i++) {
-        tiles.push_back(new Jewler());
+        tiles.push_back(new Palace());
+        tiles.push_back(new GemMerchant());
+        tiles.push_back(new Casino());
+        tiles.push_back(new BlackMarket());
+        tiles.push_back(new FabricMarket());
+        tiles.push_back(new JewelryMarket());
+        tiles.push_back(new SpiceMarket());
+        tiles.push_back(new SmallMarket());
+        tiles.push_back(new CartManufacturer());
+        tiles.push_back(new Jeweler());
         tiles.push_back(new FabricManufacturer());
         tiles.push_back(new SpiceMerchant());
         tiles.push_back(new Restaurant());

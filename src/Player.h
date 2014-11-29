@@ -23,6 +23,7 @@ private:
     int cart;
     int food;
     int inventory;//size of current inventory<=capacity
+    int gemBuyTime;
 public:
     Player();
     Player(std::string playerName);
@@ -35,6 +36,7 @@ public:
     int getCart()const;
     int getFood()const;
     int getInventory()const;
+    int getGemBuyTime()const;
     void setGold(int nGold);
     void setRuby(int nRuby);
     void setSpice(int nSpice);
@@ -43,6 +45,7 @@ public:
     void setCart(int nCart);
     void setFood(int nFood);
     void setInventory(int nInv);
+    void setGemBuyTime(int nGbt);
     bool canAct() const;
     bool pay(Player& player);
     void eat();
@@ -57,6 +60,7 @@ public:
         os<<player.cart<<" ";
         os<<player.food<<" ";
         os<<player.inventory<<" ";
+        os<<player.gemBuyTime<<" ";
         return os;
     };
     inline friend std::istream& operator >> (std::istream& is, Player& player){
@@ -69,6 +73,7 @@ public:
         is>>player.cart;
         is>>player.food;
         is>>player.inventory;
+        is>>player.gemBuyTime;
         return is;
     };
 };

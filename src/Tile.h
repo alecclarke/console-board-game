@@ -52,9 +52,9 @@ public:
     void print()const;
 };
 
-class Jewler: public Tile{
+class Jeweler: public Tile{
 public:
-    Jewler();
+    Jeweler();
     bool action(Player& player)const;
     Tile* clone()const;
     void print()const;
@@ -84,9 +84,9 @@ public:
     void print()const;
 };
 
-class JewlryMarket: public Tile{
+class JewelryMarket: public Tile{
 public:
-    JewlryMarket();
+    JewelryMarket();
     bool action(Player& player)const;
     Tile* clone()const;
     void print()const;
@@ -103,6 +103,30 @@ public:
 class BlackMarket: public Tile{
 public:
     BlackMarket();
+    bool action(Player& player)const;
+    Tile* clone()const;
+    void print()const;
+};
+
+class Casino: public Tile{
+public:
+    Casino();
+    bool action(Player& player)const;
+    Tile* clone()const;
+    void print()const;
+};
+
+class GemMerchant: public Tile{
+public:
+    GemMerchant();
+    bool action(Player& player)const;
+    Tile* clone()const;
+    void print()const;
+};
+
+class Palace: public Tile{
+public:
+    Palace();
     bool action(Player& player)const;
     Tile* clone()const;
     void print()const;

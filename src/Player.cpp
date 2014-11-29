@@ -18,6 +18,7 @@ Player::Player(std::string playerName){
     food = 10;
     cart = 9;
     inventory = 3;
+    gemBuyTime = 0;
 }
 
 Player::Player(){
@@ -82,6 +83,10 @@ void Player::setInventory(int nInv){
     inventory = nInv;
 }
 
+void Player::setGemBuyTime(int nGbt){
+    gemBuyTime = nGbt;
+}
+
 int Player::getCart()const{
     return cart;
 }
@@ -112,6 +117,10 @@ int Player::getSpice()const{
 
 int Player::getInventory()const{
     return inventory;
+}
+
+int Player::getGemBuyTime()const{
+    return gemBuyTime;
 }
 
 void Player::printStats(){

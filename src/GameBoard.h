@@ -13,6 +13,7 @@
 #include <vector>
 #include <deque>
 #include <iostream>
+#include <random>
 
 template <class T,class J>
 class GameBoard{
@@ -144,12 +145,16 @@ void GameBoard<T,J>::getCoordinates(const T& tile, int *row, int *col)const{
 template <class T, class J>
 void GameBoard<T,J>::setPlayer(J player){
     playerRef temp;
-    temp.row = 0;
-    temp.col = 0;
     temp.player = player;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> tempRow(0,rows-1);
+    std::uniform_int_distribution<> tempCol(0,columns-1);
+    temp.row = tempRow(gen);
+    temp.col = tempCol(gen);
     playerList.push_back(temp);
-    grid[0][0].currentPlayers.push_back(player);
-    grid[0][0].numPlayers++;
+    grid.at(temp.row).at(temp.col).currentPlayers.push_back(player);
+    grid.at(temp.row).at(temp.col).numPlayers++;
 }
 
 template <class T, class J>
@@ -233,6 +238,7 @@ void GameBoard<T,J>::moveUpdate(GameBoard::playerRef& pRef, enum Move move){
                 grid.at(pRef.row-1).at(pRef.col).currentPlayers.push_back(pRef.player);
                 grid.at(pRef.row-1).at(pRef.col).numPlayers++;
                 pRef.row--;
+                pRef.player.eat();
             } catch (const std::out_of_range& oor) {
                 std::cerr << "Out of Range error: " << oor.what() << '\n';
             }
@@ -244,6 +250,7 @@ void GameBoard<T,J>::moveUpdate(GameBoard::playerRef& pRef, enum Move move){
                 grid.at(pRef.row+1).at(pRef.col).currentPlayers.push_back(pRef.player);
                 grid.at(pRef.row+1).at(pRef.col).numPlayers++;
                 pRef.row++;
+                pRef.player.eat();
             } catch (const std::out_of_range& oor) {
                 std::cerr << "Out of Range error: " << oor.what() << '\n';
             }
@@ -255,6 +262,7 @@ void GameBoard<T,J>::moveUpdate(GameBoard::playerRef& pRef, enum Move move){
                 grid.at(pRef.row).at(pRef.col-1).currentPlayers.push_back(pRef.player);
                 grid.at(pRef.row).at(pRef.col-1).numPlayers++;
                 pRef.col--;
+                pRef.player.eat();
             } catch (const std::out_of_range& oor) {
                 std::cerr << "Out of Range error: " << oor.what() << '\n';
             }
@@ -266,6 +274,7 @@ void GameBoard<T,J>::moveUpdate(GameBoard::playerRef& pRef, enum Move move){
                 grid.at(pRef.row).at(pRef.col+1).currentPlayers.push_back(pRef.player);
                 grid.at(pRef.row).at(pRef.col+1).numPlayers++;
                 pRef.col++;
+                pRef.player.eat();
             } catch (const std::out_of_range& oor) {
                 std::cerr << "Out of Range error: " << oor.what() << '\n';
             }
