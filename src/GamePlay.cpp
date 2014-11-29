@@ -16,7 +16,7 @@
 void play() {
     GameBoard<class Tile, class Player> * board = new GameBoard<class Tile, class Player>();
     std::string input;
-    std::cout<<"Load Game?"<<std::endl;
+    std::cout<<"Load Game? (yes/no)"<<std::endl;
     getline(std::cin,input);
     if (input == "yes") {
         std::ifstream is("savedGame.txt");
@@ -51,7 +51,11 @@ void play() {
     while (!endGame) {
         for (int i = 0; i<board->getNumPlayers(); i++) {
             Player player = board->getPlayerList()[i].player;
-            std::cout<<"Show Surrounding Squares(yes/no)?"<<std::endl;
+            if(player.getRuby() >= 0){
+                getWinPlayer(player, board);
+                endGame = true;
+            }else{
+            std::cout<<"Show Surrounding Squares for " << player.getName() <<" (yes/no)?"<<std::endl;
             getline(std::cin,input);
             int row;
             int col;
@@ -78,7 +82,7 @@ void play() {
                     std::string str = player.getName();
                     board->move(move, str);
                 }
-                std::cout<<"Commit Action"<<std::endl;
+                std::cout<<"Commit Action?"<<std::endl;
                 getline(std::cin,input);
                 if(input =="yes"){
                     board->getPlayerCoordinates(player.getName(), &row, &col);
@@ -102,9 +106,30 @@ void play() {
                 }
                 else{
                 
+                    }
                 }
             }
         }
     }
 }
+
+void getWinPlayer(Player winPlayer, GameBoard<class Tile, class Player> * board){
+    std::cout << "Player " << winPlayer.getName() << " wins the game\n" << std::endl;
+    std::cout << "Statistics: \n" << std::endl;
+    for(int i = 0; i < board->getNumPlayers();i++){
+        Player player = board->getPlayerList()[i].player;
+        std::cout << "Player " << player.getName() << " stats: \n" << std::endl;
+        player.printStats();
+        std::cout << "\n" << std::endl;
+    }
+    std::cout << "Do you want to play again? (yes/no)" << std::endl;
+    std::string input;
+    getline(std::cin,input);
+    if(input == "yes"){
+        play();
+    }else{
+        exit(0);
+    }
+}
+
 
